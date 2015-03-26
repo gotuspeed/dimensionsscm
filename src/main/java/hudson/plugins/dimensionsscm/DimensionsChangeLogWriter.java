@@ -147,7 +147,7 @@ public class DimensionsChangeLogWriter {
         if (changeSets != null) {
             for (DimensionsChangeSet changeSet : changeSets) {
                 logStr += String.format("\t<changeset version=\"%s\">\n", escapeXML(changeSet.getVersion()));
-                logStr += String.format("\t\t<date>%s</date>\n", this.XS_DATETIME_FORMATTER.format(changeSet.getDate()));
+                logStr += String.format("\t\t<date>%s</date>\n", DimensionsChangeLogWriter.XS_DATETIME_FORMATTER.format(changeSet.getDate()));
                 logStr += String.format("\t\t<user>%s</user>\n", escapeXML(changeSet.getDeveloper()));
                 logStr += String.format("\t\t<comment>%s</comment>\n", escapeXML(changeSet.getSCMComment()));
                 logStr += "\t\t<items>\n";
