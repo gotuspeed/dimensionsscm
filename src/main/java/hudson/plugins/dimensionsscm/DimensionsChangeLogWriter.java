@@ -84,7 +84,7 @@
  */
 package hudson.plugins.dimensionsscm;
 
-import hudson.Util;
+
 import static hudson.plugins.dimensionsscm.LogInitializer.LOGGER;
 import java.io.File;
 import java.io.FileWriter;
@@ -93,6 +93,8 @@ import java.io.PrintWriter;
 import java.io.Writer;
 import java.util.List;
 import java.util.logging.Level;
+import org.apache.commons.lang3.time.FastDateFormat;
+
 
 /**
  * This experimental plugin extends Jenkins/Hudson support for Dimensions SCM
@@ -101,6 +103,7 @@ import java.util.logging.Level;
  * @author Tim Payne
  */
 public class DimensionsChangeLogWriter {
+	private final FastDateFormat XS_DATETIME_FORMATTER = FastDateFormat.getDateTimeInstance(FastDateFormat.LONG, FastDateFormat.SHORT); 
     /**
      * Save the change list to the changelogFile.
      */
@@ -144,7 +147,7 @@ public class DimensionsChangeLogWriter {
         if (changeSets != null) {
             for (DimensionsChangeSet changeSet : changeSets) {
                 logStr += String.format("\t<changeset version=\"%s\">\n", escapeXML(changeSet.getVersion()));
-               // logStr += String.format("\t\t<date>%s</date>\n", Util.XS_DATETIME_FORMATTER.format(changeSet.getDate()));
+                logStr += String.format("\t\t<date>%s</date>\n", DimensionsChangeLogWriter.XS_DATETIME_FORMATTER.format(changeSet.getDate()));
                 logStr += String.format("\t\t<user>%s</user>\n", escapeXML(changeSet.getDeveloper()));
                 logStr += String.format("\t\t<comment>%s</comment>\n", escapeXML(changeSet.getSCMComment()));
                 logStr += "\t\t<items>\n";
