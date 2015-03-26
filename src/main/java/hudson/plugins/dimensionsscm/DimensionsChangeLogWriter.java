@@ -103,7 +103,7 @@ import org.apache.commons.lang3.time.FastDateFormat;
  * @author Tim Payne
  */
 public class DimensionsChangeLogWriter {
-	private final FastDateFormat XS_DATETIME_FORMATTER = FastDateFormat.getDateTimeInstance(FastDateFormat.LONG, FastDateFormat.SHORT); 
+	private final static FastDateFormat XS_DATETIME_FORMATTER = FastDateFormat.getDateTimeInstance(FastDateFormat.LONG, FastDateFormat.SHORT); 
     /**
      * Save the change list to the changelogFile.
      */
